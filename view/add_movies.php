@@ -83,7 +83,9 @@
 				</div>
 			</div>
 		</div>
-		<?php /*if (!empty($studentInfos['stu_id'])) : ?>
+		<?php /* here is the link
+
+        if (!empty($studentInfos['stu_id'])) : ?>
 			<input type="submit" class="btn btn-success btn-block" value="Modifier" />
     	<?php else : ?>
 			<input type="submit" class="btn btn-success btn-block" value="Ajouter" />

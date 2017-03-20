@@ -1,5 +1,5 @@
 <?php
-
+// rename File !!!!!!
 // Inclusion de config.php
 require dirname(dirname(__FILE__)).'/inc/config.php';
 /*
