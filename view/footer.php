@@ -2,10 +2,10 @@
 		<br><br>
 		<div class="panel panel-default">
   			<div class="panel-body text-center">
-  				proGweb SARL &copy; <?= date('Y') ?> - Tous droits réservés<br>
-  				<a href="<?= $socialLinks->facebook->shareUrl ?>">Facebook</a>&nbsp;|
+  				CSS sàrl &copy; <?= date('Y') ?> - All rights reserved<br>
+  				<!--- <a href="<?= $socialLinks->facebook->shareUrl ?>">Facebook</a>&nbsp;|
   				<a href="<?= $socialLinks->twitter->shareUrl ?>">Twitter</a>&nbsp;|
-  				<a href="<?= $socialLinks->linkedin->shareUrl ?>">LinkedIn</a>
+  				<a href="<?= $socialLinks->linkedin->shareUrl ?>">LinkedIn</a> -->
   			</div>
   		</div>
 	</div>
