@@ -1,31 +1,30 @@
 <?php
 
-// Inclusion de config.php
-// double dirname pour retrouver le répertoire parent
+// Include config.php here
+// double dirname to go to parent directory
 require dirname(dirname(__FILE__)).'/inc/config.php';
-/*
-// ICI MON CODE POUR CETTE PAGE
+
+/* // Code for this page here
 $currentPage = '';
 
-// Je récupère toutes les sessions
-$sessionsList = array();
+// Get all movies
+$moviesList = array();
 $sql = '
-	SELECT ses_id, ses_number, ses_start_date, ses_end_date, loc_name, tra_name
-	FROM session
-	INNER JOIN location ON location.loc_id = session.location_loc_id
-	INNER JOIN training ON training.tra_id = session.training_tra_id
+	SELECT * 
+	FROM movies
+	
 ';
 $sth = $pdo->query($sql);
 if ($sth === false) {
 	print_r($sth->errorInfo());
 }
 else {
-	while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+	while ($row = $sth->fetchAll(PDO::FETCH_ASSOC)) {
 		$title = $row['tra_name'].' à '.$row['loc_name'];
-		$sessionsList[$title][] = $row;
+		$moviesList[$title][] = $row;
 	}
 }
-
+/*
 // Stats nb students par ville
 $sql = '
 	SELECT count(*) as nb, cit_name
@@ -40,11 +39,11 @@ if ($sth === false) {
 }
 else {
 	$studentsVilleList = $sth->fetchAll(PDO::FETCH_ASSOC);
-}
+}*/
 
 // FIN DE MON CODE POUR CETTE PAGE
-*/
-// A la fin, TOUJOURS, les vues
+
+// At the end, always all view pages */
 include dirname(dirname(__FILE__)).'/view/header.php';
-include dirname(dirname(__FILE__)).'/view/home.php';
+// include dirname(dirname(__FILE__)).'/view/home.php';
 include dirname(dirname(__FILE__)).'/view/footer.php';

@@ -2,27 +2,46 @@
 
 // Inclusion de config.php
 require dirname(dirname(__FILE__)).'/inc/config.php';
-/*
-// ICI MON CODE POUR CETTE PAGE
-$currentPage = 'Etudiant';
 
-// Si suppression
-if (isset($_GET['deleteId'])) {
-	$id = intval($_GET['deleteId']);
+$currentPage = 'Détail du film';
 
-	if (deleteStudent($id)) {
-		header('Location: list.php?deleted=1');
-		exit;
-	}
+
+	global $pdo;
+	$id=1;
+
+	$sql = '
+		SELECT mov_title, gen_name, mov_plot, mov_actors, mov_rel, sup_name, mov_fileName
+		FROM movies
+		INNER JOIN genres ON genres.gen_id = movies.genres_gen_id
+		INNER JOIN support ON support.sup_id = movies.support_sup_id
+		WHERE mov_id = :movieId
+	';
+
+		$sth = $pdo->prepare($sql);
+		$sth->bindValue(':movieId', $id,  PDO::PARAM_INT);
+
+		if ($sth->execute() === false) {
+			print_r($pdo->errorInfo());
+		}
+		else {
+			$movieDetail = $sth->fetch(PDO::FETCH_ASSOC);
+
+		}
+
+
+// Si detail
+/*if (isset($_GET['detailId'])) {
+	$id = intval($_GET['detailId']);
 }
 
 // Je récupère le paramètre dans l'URL
-$studentId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$movieId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Ici, j'ai mis la requete SQL dans la fonction "getStudentInfos", et maintenant, j'appelle cette fonction en donnant l'ID en paramètre
-$studentInfos = getStudentInfos($studentId);
-*/
-// FIN DE MON CODE POUR CETTE PAGE
+$movieDetail = getMoviesInfo($movieId);*/
+
+$json = file_get_contents('http://www.omdbapi.com/?t=invasion+U.S.A.');
+
+$array = json_decode($json, true);
 
 // A la fin, TOUJOURS, les vues
 include dirname(dirname(__FILE__)).'/view/header.php';
