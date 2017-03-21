@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Projet TOTO</title>
+	<title>Project moviesd</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -28,22 +28,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Projet TOTO</a>
+          <a class="navbar-brand" href="index.php">Project Movies</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
-            <li><a href="index.php"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Toutes les sessions</a></li>
-            <li><a href="list.php"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Tous les étudiants</a></li>
-            <li><a href="add.php"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un étudiant</a></li>
-            <li><a href="signin.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Se connecter</a></li>
+            <li><a href="index.php"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Home</a></li>
+            <li><a href="list.php"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Genres</a></li>
+            <li><a href="add.php"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a movie</a></li>
+            <!--- <li><a href="signin.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Se connecter</a></ li> -->
 
           </ul>
 	        <form action="list.php" class="navbar-form navbar-right" method="get">
 				<div class="form-group">
 					<input type="text" name="s" class="form-control" placeholder="Search">
 				</div>
-				<button type="submit" class="btn btn-success btn-sm">Rechercher</button>
+				<button type="submit" class="btn btn-success btn-sm">Search</button>
 			</form>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,7 +53,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="index.php">Home</a></li>
-			<?php/* if (!empty($currentPage)) : ?>
+			<?php if (!empty($currentPage)) : ?>
 				<li class="active"><a href="#"><?= $currentPage ?></a></li>
-			<?php endif;*/ ?>
+			<?php endif; ?>
 		</ol>

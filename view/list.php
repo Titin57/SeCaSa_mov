@@ -30,7 +30,7 @@
   	</tr>
   </thead>
   <tbody>
-  <?php/* foreach ($studentList as $currentStudent) : ?>
+  <!--- <?php /*foreach ($studentList as $currentStudent) : ?>
 	<tr>
 		<td><?= $currentStudent['stu_id']; ?></td>
 		<td><?= $currentStudent['stu_lastname']; ?></td>
@@ -51,7 +51,7 @@
 			</div>
 		</td>
 	</tr>
-  <?php endforeach; */?>
+  <?php endforeach; */ ?> -->
   </tbody>
   </table>
 </div>
