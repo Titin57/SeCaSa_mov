@@ -1,4 +1,55 @@
 <?php
+
+// Function to get all support Mediums from DB
+function getAllSupport() {
+	global $pdo;
+
+	$sql = '
+		SELECT sup_id, sup_name
+		FROM support
+	';
+
+		$sth = $pdo->prepare($sql);
+
+		if ($sth->execute() === false) {
+			//print_r($pdo->errorInfo());
+		}
+		else {
+			$movieSupport = $sth->fetchAll(PDO::FETCH_ASSOC);
+			//print_r ($movieSupport);
+			return $movieSupport;
+		}
+	return false;
+}
+
+// Function to get all film genres from DB
+function getAllGenres() {
+	global $pdo;
+
+	$sql = '
+		SELECT gen_id, gen_name
+		FROM genres
+	';
+
+	$sth = $pdo->prepare($sql);
+
+	if ($sth->execute() === false) {
+		//print_r($pdo->errorInfo());
+	}
+	else {
+		$movieGenres = $sth->fetchAll(PDO::FETCH_ASSOC);
+		//print_r ($movieGenres);
+		return $movieGenres;
+	}
+	return false;
+}
+
+// Function to introduce Film data into DB (still in public\add_movies)
+/*
+function addFilm(...){};
+*/
+
+
 // Fonction permettant de retourner le nom/titre (text) d'une sympathie (int)
 /*
 function getSympathieName($sympathie) {

@@ -19,12 +19,12 @@
 
 				<div class="form-group">
 					<label>movie title</label>
-					<input type="text" class="form-control" name="mov_title" value="<?= $filmInfos['mov_title'] */?>" placeholder="movie title" />
+					<input type="text" class="form-control" name="mov_title" value="<?= $filmInfos['mov_title']?>" placeholder="movie title" />
 				</div>
 
 				<div class="form-group">
 					<label>actors</label>
-					<input type="text" class="form-control" name="mov_actors" value="<?= $filmInfos['mov_actors'] */?>" placeholder="actors" />
+					<input type="text" class="form-control" name="mov_actors" value="<?= $filmInfos['mov_actors']?>" placeholder="actors" />
 				</div>
 
 				<div class="form-group">
@@ -37,23 +37,34 @@
   					<input type="text" class="form-control" name="mov_rel" value="<?=$filmInfos['mov_rel'] ?>" placeholder="release date" />
   					<small class="form-text text-muted">format in YYYY-MM-DD (<?= date('Y-m-d') ?>)</small>
   				</div>
-			</div>
-	  		<div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label>genre</label>
+                    <select name="gen_name" class="form-control">
+                        <option value="">choose</option>
+                        <?php foreach ($movieGenres as $key=>$value) : ?>
+                        <option value="<?= $value['gen_id']?>" > <?= $value['gen_name']?> </option>
+                        <?php endforeach; ?>
+                    </select>
 
-				<div class="form-group">
-					<label>genre</label>
-                    <input type="text" class="form-control" name="gen_name" value="<?=$filmInfos['gen_name'] ?>" placeholder="genre" />
+                </div>
+                <div class="form-group">
+					<label>support</label>
+                    <select name="sup_name" class="form-control">
+                        <option value="">choose</option>
+                        <?php foreach ($movieGenres as $key=>$value) : ?>
+                        <option value="<?= $value['gen_id']?>" > <?= $value['gen_name']?> </option>
+                        <?php endforeach; ?>
+                    </select>
 
-                    <!--
-					<select name="stu_friendliness" class="form-control">
-						<option value="">choisissez</option>
-						<?php/*for($i=0;$i<=5;$i++) : ?>
-							<option value="<?= $i ?>"<?= $studentInfos['stu_friendliness'] == $i ? ' selected=selected"' : '' ?>><?= getSympathieName($i) ?></option>
-						<?php endfor; */?>
-					</select>
-                    -->
+                    </select>
 				</div>
 
+
+
+            </div>
+
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group">
 					<label>film plot</label>
 					<textarea rows="4" cols="50"  class="form-control" name="mov_plot" value="<?=$filmInfos['mov_plot'] ?>" placeholder="film plot" >
@@ -63,7 +74,8 @@
 
 				<div class="form-group">
 					<label>Image</label>
-					<input type="file" name="stu_image" placeholder="Image" />
+                    <p>insert image here</p>
+					<!--<input type="file" name="stu_image" placeholder="Image" />-->
 				</div>
 			</div>
 		</div>
@@ -72,8 +84,8 @@
         if (!empty($filmInfos['film_id'])) : ?>
 			<input type="submit" class="btn btn-success btn-block" value="Modify" />
     	<?php else : ?>
-			<input type="submit" class="btn btn-success btn-block" value="Ajdd" />
-		<?php endif; */?>
+			<input type="submit" class="btn btn-success btn-block" value="Add" />
+		<?php endif; ?>
 	</form>
   </div>
 </div>
