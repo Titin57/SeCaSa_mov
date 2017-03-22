@@ -1,16 +1,26 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Add a film</h3>
-  </div>
-  <div class="panel-body">
-  	<?php /*if (!empty($errorList)) : ?>
-		<div class="alert alert-danger" role="alert">
-		  <?php foreach ($errorList as $currentErrorText) : ?>
-		  	<?= $currentErrorText ?><br>
-		  <?php endforeach; ?>
-		</div>
-  	<?php endif;*/ ?>
-	<form action="" method="post" enctype="multipart/form-data">
+    <div class="panel-body">
+        <form action="add_movies.php" class="navbar-form navbar-right" method="get">
+        <div class="form-group">
+            <input type="text" name="omdb" class="form-control" placeholder="title of the film">
+            <button type="submit" class="btn btn-success btn-sm">Ask imdB</button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Add a film</h3>
+    </div>
+    <div class="panel-body">
+    <?php /*if (!empty($errorList)) : ?>
+        <div class="alert alert-danger" role="alert">
+          <?php foreach ($errorList as $currentErrorText) : ?>
+            <?= $currentErrorText ?><br>
+          <?php endforeach; ?>
+        </div>
+    <?php endif;*/ ?>
+	<form action="add_movies.php" method="post" enctype="multipart/form-data">
 		<?php if (!empty($filmInfos['mov_post'])) :?>
 			<img src="<?= $filmInfos['mov_post'] ?>" alt="" height="140" style="display:block;margin:auto;" /><br>
 		<?php endif; ?>
@@ -39,7 +49,7 @@
   				</div>
                 <div class="form-group">
                     <label>genre</label>
-                    <select name="gen_name" class="form-control">
+                    <select name="genres_gen_id" class="form-control">
                         <option value="">choose</option>
                         <?php foreach ($movieGenres as $key=>$value) : ?>
                         <option value="<?= $value['gen_id']?>" > <?= $value['gen_name']?> </option>
@@ -49,10 +59,10 @@
                 </div>
                 <div class="form-group">
 					<label>support</label>
-                    <select name="sup_name" class="form-control">
+                    <select name="support_sup_id" class="form-control">
                         <option value="">choose</option>
-                        <?php foreach ($movieGenres as $key=>$value) : ?>
-                        <option value="<?= $value['gen_id']?>" > <?= $value['gen_name']?> </option>
+                        <?php foreach ($movieSupport as $key=>$value) : ?>
+                        <option value="<?= $value['sup_id']?>" > <?= $value['sup_name']?> </option>
                         <?php endforeach; ?>
                     </select>
 
