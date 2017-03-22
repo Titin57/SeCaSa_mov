@@ -35,7 +35,7 @@
             <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
             <li><a href="index.php"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Home</a></li>
             <li><a href="list.php"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Genres</a></li>
-            <li><a href="add.php"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a movie</a></li>
+            <li><a href="add_movies.php"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a movie</a></li>
             <!--- <li><a href="signin.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Se connecter</a></ li> -->
 
           </ul>
