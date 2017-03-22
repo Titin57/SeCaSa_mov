@@ -1,4 +1,28 @@
 <?php
+/*
+function formatDate($relDate) {
+		#$relDateFormatted -> date('Y-m-d',time($relDate));
+		echo strtotime($relDate);
+
+		$relDateFormatted -> strtotime('Y-m-d',time($relDate));
+
+
+
+	/*
+	if ($timestamp < time()) {
+		$diff = time() - $timestamp;
+		return floor($diff / (365*86400));
+	}
+
+	return $relDateFormatted ;
+}
+
+	*/
+
+function removeSpaces ($input){
+	return str_ireplace ( ' ' , '+' , $input );
+}
+
 
 // Filter the User inputs
 function filterStringInputPost($name, $defaultValue='') {
@@ -77,15 +101,21 @@ function askImdb($userInputFilm){
 
 
 	echo 'Genre: '.$object->Genre.'<br>';
-*/
+
 
 	/*
 	// Get it as array
-	$array = json_decode($json, true);
-	var_dump($array);
-	// J'affiche le genre
-	echo 'Genre: '.$array['Genre'].'<br>';
 	*/
+	$filmInfos = json_decode($json, true);
+	//var_dump($array);
+	// J'affiche le genre
+
+	//echo 'Genre: '.$filmInfos['Genre'].'<br>';
+
+
+
+
+	return $filmInfos;
 
 }
 

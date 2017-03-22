@@ -11,6 +11,10 @@ $movieGenres = getAllGenres();
 
 if (isset($_GET['omdb'])) {
 	$askimdb = $_GET['omdb'];
+	$askimdb = removeSpaces ($askimdb);
+	echo 'input in the url '. $askimdb;
+	$filmInfosOmdb= askImdb($askimdb);
+	//print_r($filmInfos);
 }
 else {
 	// Sinon, page n°1 par défaut
@@ -18,22 +22,25 @@ else {
 }
 
 
-askImdb($askimdb);
+//askImdb($askimdb);
 
 // Formulaire soumis
 if (!empty($_POST)) {
 	//print_r($_POST);exit;
 	// Je récupère les données en GET
-	$mov_post = 'mov_post';
+	$mov_post = filterStringInputPost('mov_post');
 	$mov_title = filterStringInputPost('mov_title');
 	$mov_actors = filterStringInputPost('mov_actors');
 	$mov_fileName = filterStringInputPost('mov_fileName');
+
+	#$mov_rel = filter_input(INPUT_POST, 'mov_rel');
 
 	$mov_rel = filterStringInputPost('mov_rel');
 	$mov_plot = filterStringInputPost('mov_plot');
 	$genres_gen_id = filterStringInputPost('genres_gen_id');
 	$support_sup_id = filterStringInputPost('support_sup_id');
 
+	#formatDate($mov_rel);
 	// Le tableau contenant toutes les valeurs
 	$errorList = array();
 
@@ -167,7 +174,7 @@ $sessionsList = getAllSessions();
 
 
 // Pour éviter les notices dans la vue, j'initialise mon tableau de données
-
+/*
 // Dont know what this does, but i changed the variables anyway
 $filmInfos = array(
 	'mov_post' => 0,
@@ -177,8 +184,10 @@ $filmInfos = array(
 	'mov_rel' => '',
 	'mov_plot' => ''
 );
-
-
+*/
+$filmInfos = array(
+	'mov_fileName' => 'C:\media\myFilms'
+);
 
 // A la fin, TOUJOURS, les vues
 include dirname(dirname(__FILE__)).'/view/header.php';
