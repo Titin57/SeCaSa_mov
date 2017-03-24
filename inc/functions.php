@@ -1,4 +1,39 @@
 <?php
+/*
+function formatDate($relDate) {
+		#$relDateFormatted -> date('Y-m-d',time($relDate));
+		echo strtotime($relDate);
+
+		$relDateFormatted -> strtotime('Y-m-d',time($relDate));
+
+
+
+	/*
+	if ($timestamp < time()) {
+		$diff = time() - $timestamp;
+		return floor($diff / (365*86400));
+	}
+
+	return $relDateFormatted ;
+}
+
+	*/
+
+function removeSpaces ($input){
+	return str_ireplace ( ' ' , '+' , $input );
+}
+
+
+// Filter the User inputs
+function filterStringInputPost($name, $defaultValue='') {
+	$getValue = filter_input(INPUT_POST, $name);
+	if ($getValue !== false) {
+		return trim(strip_tags($getValue));
+	}
+	return $defaultValue;
+}
+
+
 
 // Function to get all support Mediums from DB
 function getAllSupport() {
@@ -43,6 +78,125 @@ function getAllGenres() {
 	}
 	return false;
 }
+
+function askImdb($userInputFilm){
+
+	$searchString = 'http://www.omdbapi.com/?t='.$userInputFilm;
+	//echo $searchString;
+
+	$json = file_get_contents($searchString);
+	//echo $json.'<br>';
+
+	// Get it as object
+	$object = json_decode($json);
+	//var_dump($object);
+	// J'affiche le genre
+
+/*
+	echo 'Title: '.$object->Title.'<br>';
+	echo 'Actors: '.$object->Actors.'<br>';
+	echo 'Released: '.$object->Released.'<br>';
+	echo 'Plot: '.$object->Plot.'<br>';
+	echo 'Actors: '.$object->Actors.'<br>';
+
+
+	echo 'Genre: '.$object->Genre.'<br>';
+
+
+	/*
+	// Get it as array
+	*/
+	$filmInfos = json_decode($json, true);
+	//var_dump($array);
+	// J'affiche le genre
+
+	//echo 'Genre: '.$filmInfos['Genre'].'<br>';
+
+
+
+
+	return $filmInfos;
+
+}
+
+
+function addMovie(
+			$mov_post,
+			$mov_title,
+			$mov_actors,
+			$mov_fileName,
+
+			$mov_rel,
+			$mov_plot,
+			$genres_gen_id,
+			$support_sup_id
+			) {
+	global $pdo;
+
+	/*	* 1 sql request on movies
+	*******************************/
+
+	$sql = '
+		INSERT INTO movies (mov_post,
+							mov_title,
+							mov_actors,
+							mov_fileName,
+
+							mov_rel,
+							mov_plot,
+							genres_gen_id,
+							support_sup_id
+							)
+
+		VALUES (:mov_post,
+				:mov_title,
+				:mov_actors,
+				:mov_fileName,
+
+				:mov_rel,
+				:mov_plot,
+				:genres_gen_id,
+				:support_sup_id)
+	';
+	$sth = $pdo->prepare($sql);
+	$sth->bindValue(':mov_post', $mov_post);
+	$sth->bindValue(':mov_title', $mov_title);
+	$sth->bindValue(':mov_actors', $mov_actors);
+	$sth->bindValue(':mov_fileName', $mov_fileName);
+
+	$sth->bindValue(':mov_rel', $mov_rel);
+	$sth->bindValue(':mov_plot', $mov_plot);
+	$sth->bindValue(':genres_gen_id', $genres_gen_id, PDO::PARAM_INT);
+	$sth->bindValue(':support_sup_id', $support_sup_id, PDO::PARAM_INT);
+
+	/*
+	I didnt check the parameter genre like we did in class :
+	//$sth->bindValue(':cit_id', $cityId, PDO::PARAM_INT);
+*/
+
+	if ($sth->execute() === false) {
+		print_r($sth->errorInfo());
+	}
+	else {
+			// Je récupère l'ID auto-incrémenté
+			return $pdo->lastInsertId();
+
+		}
+			/*
+		*/
+	return false;
+};
+
+
+
+
+
+
+/////////////////  OLD STUFF  ///////////////////////////
+///////////////  PROJET TOTO  ///////////////////////////
+
+
+
 
 // Function to introduce Film data into DB (still in public\add_movies)
 /*
