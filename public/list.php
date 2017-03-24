@@ -2,10 +2,40 @@
 
 // Inclusion de config.php
 require dirname(dirname(__FILE__)).'/inc/config.php';
-/*
-// ICI MON CODE POUR CETTE PAGE
-$currentPage = 'Tous les étudiants';
 
+// ICI MON CODE POUR CETTE PAGE
+$currentPage = 'Liste des films';
+
+global $pdo;
+/*$id=1;*/
+
+$sql = '
+		SELECT mov_title, mov_plot, mov_post
+		FROM movies
+		/*WHERE mov_id = :movieId*/
+	';
+
+	$sth = $pdo->prepare($sql);
+	/*$sth->bindValue(':movieId', $id,  PDO::PARAM_INT);*/
+
+	if ($sth->execute() === false) {
+		print_r($pdo->errorInfo());
+	}
+	else {
+		$movieList = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+	?>
+	<pre><?php
+	//print_r($movieList); ?>
+	</pre>
+<?php
+
+/*foreach ($movieList as $Index => $film) {
+	//print_r($Index);
+	//print_r($film['mov_title']);
+}*/
+/*
 // Je récupère le paramètre d'URL/URI "page"
 if (isset($_GET['page'])) {
 	$pageNo = $_GET['page'];
