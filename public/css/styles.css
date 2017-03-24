@@ -1,0 +1,18 @@
+.suggest_link {
+background-color: #333333;
+padding:2px 4px 4px 2px;
+color:#858585; font-family:Verdana; font-size:11px; color:#ffffff;
+}
+.suggest_link_over {
+background-color: #666666;
+padding:2px 4px 4px 2px;
+color:#858585; font-family:Verdana; font-size:11px; color:#ffffff;
+}
+#search_suggest {
+background-color: #333333;
+text-align: left; 
+z-index:20;  
+width:240px; height: inherit;
+border:hidden;
+color:#ffffff; font-family:Verdana; font-size:11px; cursor: pointer;
+}   
