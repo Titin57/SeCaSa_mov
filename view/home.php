@@ -13,15 +13,12 @@
 	</div>
 </div>
 
-<!--- Search field start here -->
+<!--- Search field start here 
+search in the DB if movie title is present
+result search should start by typing -->
 
-<form action="list.php" class="navbar-form navbar-center " method="get">
-	<div class="form-group">
-		<input type="text" name="s" class="form-control input-lg" placeholder="Search">
-	</div>
-	<button type="submit" class="btn btn-success btn-lg">OK</button>
-</form>
-
+<input type="text" name="DEMO_NAME" id="DEMO_NAME" alt="Possible Results" onKeyUp="searchSuggest();" autocomplete="off">
+<div id="search_suggest"></div>
 <!--- Search stops here -->
 
 <div>

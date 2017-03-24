@@ -12,8 +12,10 @@
 	<!-- jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+	<script language="JavaScript" type="text/javascript" src="ajax_search.js" charset="utf-8"></script>
+
 	<style type="text/css">
-	body { padding-top: 70px; }
+		body { padding-top: 70px; }
 	</style>
 </head>
 <body>
@@ -39,7 +41,7 @@
             <!--- <li><a href="signin.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Se connecter</a></ li> -->
 
           </ul>
-	        <form action="list.php" class="navbar-form navbar-right" method="get">
+	        <form action="search.php" class="navbar-form navbar-right" method="get">
 				<div class="form-group">
 					<input type="text" name="s" class="form-control" placeholder="Search">
 				</div>
